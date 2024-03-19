@@ -1,6 +1,6 @@
 import { App, Plugin, PluginSettingTab, Setting } from 'obsidian';
 import { CalloutManager, getApi } from "obsidian-callout-manager";
-import CalloutParser, { CHResult } from "src/parser";
+import CalloutParser, { CHResult } from "src/utils/parser";
 import CalloutSuggest from './suggest/callout-suggest';
 
 // Remember to rename these classes and interfaces!
@@ -79,8 +79,8 @@ class CalloutHelperSettingTab extends PluginSettingTab {
 		containerEl.empty();
 
 		new Setting(containerEl)
-			.setName('Callout Syntax')
-			.setDesc('Which Callout syntax do you use?')
+			.setName('Callout syntax')
+			.setDesc('Which callout syntax do you use?')
 			.addDropdown(dropDown => {
 				dropDown.addOption('default', 'Obsidian Syntax   > [!name]');
 				dropDown.addOption('admonition', 'Admonition Syntax   ```name');
@@ -91,7 +91,7 @@ class CalloutHelperSettingTab extends PluginSettingTab {
 			})
 
 		new Setting(containerEl)
-			.setName('Completion Trigger Character')
+			.setName('Completion trigger character')
 			.setDesc('Which character should trigger the in-line suggestions?')
 			.addText(text => {
 				text
