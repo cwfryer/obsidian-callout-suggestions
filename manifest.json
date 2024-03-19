@@ -1,0 +1,10 @@
+{
+	"id": "obsidian-callout-suggestions",
+	"name": "Callout Suggestions",
+	"version": "1.0.0",
+	"minAppVersion": "0.15.0",
+	"description": "Adds autocompletion for callouts.",
+	"author": "cwfryer",
+	"authorUrl": "https://github.com/cwfryer/obsidian-callout-suggestions",
+	"isDesktopOnly": false
+}
