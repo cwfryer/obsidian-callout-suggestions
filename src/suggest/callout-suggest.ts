@@ -126,7 +126,7 @@ export class CalloutPreviewComponent extends Component {
 
 	public constructor(containerEl: HTMLElement, options: CalloutCompletion) {
 		super();
-		const { color, icon, label } = options;
+		const { icon, label } = options;
 
 		const frag = document.createDocumentFragment();
 
@@ -137,7 +137,6 @@ export class CalloutPreviewComponent extends Component {
 		const titleEl = (this.titleEl = titleElContainer.createDiv({ cls: 'callout-title-inner' }));
 		titleEl.textContent = label;
 		this.setIcon(icon);
-		this.setColor(color);
 		this.setCalloutID(label);
 
 		// Attach to the container.
@@ -162,10 +161,7 @@ export class CalloutPreviewComponent extends Component {
 	 * @param icon The ID of the new icon to use.
 	 */
 	public setIcon(icon: string): typeof this {
-		const { iconEl, calloutEl } = this;
-
-		// Change the icon style variable.
-		calloutEl.style.setProperty('--callout-icon', icon);
+		const { iconEl } = this;
 
 		// Clear the icon element and append the SVG.
 		iconEl.empty();
@@ -178,23 +174,6 @@ export class CalloutPreviewComponent extends Component {
 	}
 
 	/**
-	 * Changes the callout color.
-	 *
-	 * @param color The color to use.
-	 */
-	public setColor(color: string | undefined): typeof this {
-		const { calloutEl } = this;
-
-		if (color == null) {
-			calloutEl.style.removeProperty('--callout-color');
-			return this;
-		}
-
-		calloutEl.style.setProperty('--callout-color', `${color}`);
-		return this;
-	}
-
-	/**
 	 * Attaches the callout preview to a DOM element.
 	 * This places it at the end of the element.
 	 *
@@ -203,14 +182,5 @@ export class CalloutPreviewComponent extends Component {
 	public attachTo(containerEl: HTMLElement): typeof this {
 		containerEl.appendChild(this.calloutEl);
 		return this;
-	}
-
-	/**
-	 * Resets the `--callout-color` and `--callout-icon` CSS properties added to the callout element.
-	 */
-	public resetStylePropertyOverrides() {
-		const { calloutEl } = this;
-		calloutEl.style.removeProperty('--callout-color');
-		calloutEl.style.removeProperty('--callout-icon');
 	}
 }

@@ -1,5 +1,5 @@
 import { Callout } from "obsidian-callout-manager";
-import CalloutSuggestions, { Format } from "./main";
+import CalloutSuggestions, { Format } from "src/main";
 
 export interface CHResult {
 	callout: Callout,
@@ -16,11 +16,14 @@ export default class CalloutParser {
 
 	getCallout(selectedText: string): Callout {
 		const allCallouts = this.plugin.calloutManager!.getCallouts();
-		let result = allCallouts.filter((val) => val.id === selectedText)[0];
+		let result = allCallouts.filter((val: Callout) => val.id === selectedText)[0];
 		return result
 	}
 
 	formatCallout(callout: Callout, format: Format): string {
+		if (callout.id === 'none') {
+			return "> "
+		}
 		let prefix: string;
 		let suffix: string;
 		switch (format) {
@@ -36,7 +39,7 @@ export default class CalloutParser {
 	}
 
 	getFormattedCallout(selectedText: string, format: Format): CHResult {
-		let callout = this.getCallout(selectedText);
+		let callout = this.getCallout(selectedText) || { id: 'none' };
 		let formattedString = this.formatCallout(callout, format);
 		return {
 			callout,
