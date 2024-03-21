@@ -15,8 +15,8 @@ Trigger the auto-complete with ``` >! ```
 
 ## Installation
 ### Prerequisite Dependencies
-| Plugin | Usage|
-| ______ | ____ |
+| Plugin  | Usage |
+| ------------- | ------------- |
 | [Callout Manager](https://github.com/eth-p/obsidian-callout-manager) | Uses the API to aggregate callouts.
 
 In Obsidian go to `Settings > Third-party plugins > Community Plugins > Browse` and search for `Callout Manager`.
