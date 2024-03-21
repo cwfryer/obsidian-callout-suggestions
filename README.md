@@ -4,8 +4,8 @@ This is a user experience enhancing plugin for Obsidian (https://obsidian.md).
 
 I can never remember all the callout tags. Plus, I've made a few of my own that I use pretty frequently.
 
-This plugin provides a Suggestion Modal similar to what you'll find in [Obsidian Natural Language Dates](https://github.com/argenos/nldates-obsidian).
-It is compatible with the excellent [Obsidian Callout Manager](https://github.com/eth-p/obsidian-callout-manager).
+This plugin provides a Suggestion Modal for Callouts similar to what you'll find in [Obsidian Natural Language Dates](https://github.com/argenos/nldates-obsidian).
+It is compatible with (and depends on) the excellent [Obsidian Callout Manager](https://github.com/eth-p/obsidian-callout-manager).
 
 ## Features
 - Callout autosuggest
@@ -13,11 +13,18 @@ It is compatible with the excellent [Obsidian Callout Manager](https://github.co
 ## Usage
 Trigger the auto-complete with ``` >! ```
 
-## How to install
+## Installation
+### Prerequisite Dependencies
+| Plugin | Usage|
+| ______ | ____ |
+| [Callout Manager](https://github.com/eth-p/obsidian-callout-manager) | Uses the API to aggregate callouts.
 
+In Obsidian go to `Settings > Third-party plugins > Community Plugins > Browse` and search for `Callout Manager`.
+
+### How to Install
 In Obsidian go to `Settings > Third-party plugins > Community Plugins > Browse` and search for `Callout Suggestions`.
 
-### Manual installation
+#### Manual installation
 
 Unzip the [latest release](https://github.com/cwfryer/obsidian-callout-suggestions/releases/latest) into your `<vault>/.obsidian/plugins/` folder.
 

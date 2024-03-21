@@ -1,5 +1,5 @@
-import { App, Plugin, PluginSettingTab, Setting } from 'obsidian';
-import { CalloutManager, getApi } from "obsidian-callout-manager";
+import { App, Notice, Plugin, PluginSettingTab, Setting } from 'obsidian';
+import { CalloutManager, getApi, isInstalled } from "obsidian-callout-manager";
 import CalloutParser, { CHResult } from "src/utils/parser";
 import CalloutSuggest from './suggest/callout-suggest';
 
@@ -25,6 +25,12 @@ export default class CalloutSuggestions extends Plugin {
 	public settings: CalloutSuggestionsSettings;
 
 	async onload() {
+		if (!isInstalled()) {
+			console.log("Callout Suggestions depends on Callout Manager. Install and enable it from community plugins before enabling this.");
+			new Notice("Callout Suggestions depends on Callout Manager. Install and enable it from community plugins before enablng this.");
+			this.unload();
+			return
+		}
 		await this.loadSettings();
 
 		this.parser = new CalloutParser(this);
