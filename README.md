@@ -6,6 +6,7 @@ I can never remember all the callout tags. Plus, I've made a few of my own that 
 
 This plugin provides a Suggestion Modal for Callouts similar to what you'll find in [Obsidian Natural Language Dates](https://github.com/argenos/nldates-obsidian).
 It is compatible with (and depends on) the excellent [Obsidian Callout Manager](https://github.com/eth-p/obsidian-callout-manager).
+Use them together to make callouts easier to use!
 
 ## Features
 - Callout autosuggest
