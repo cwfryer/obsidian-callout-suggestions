@@ -9,14 +9,21 @@ export type Format =
 	| "default"
 	| "admonition"
 
+export type TextCase =
+	| "lower"
+	| "title"
+	| "upper"
+
 interface CalloutSuggestionsSettings {
 	calloutFormat: Format;
 	autocompleteTriggerPhrase: string;
+	calloutCase: TextCase;
 }
 
 const DEFAULT_SETTINGS: CalloutSuggestionsSettings = {
 	calloutFormat: "default",
 	autocompleteTriggerPhrase: "!",
+	calloutCase: "lower",
 }
 
 export default class CalloutSuggestions extends Plugin {
@@ -90,6 +97,7 @@ class CalloutHelperSettingTab extends PluginSettingTab {
 			.addDropdown(dropDown => {
 				dropDown.addOption('default', 'Obsidian Syntax   > [!name]');
 				dropDown.addOption('admonition', 'Admonition Syntax   ```name');
+				dropDown.setValue(this.plugin.settings.calloutFormat);
 				dropDown.onChange(async (value: Format) => {
 					this.plugin.settings.calloutFormat = value;
 					await this.plugin.saveSettings()
@@ -107,6 +115,20 @@ class CalloutHelperSettingTab extends PluginSettingTab {
 						this.plugin.settings.autocompleteTriggerPhrase = value;
 						await this.plugin.saveSettings();
 					})
+			})
+
+		new Setting(containerEl)
+			.setName('Case for inserted callout')
+			.setDesc('Select the case for the inserted callout')
+			.addDropdown(dropDown => {
+				dropDown.addOption('lower', 'lowercase');
+				dropDown.addOption('title', 'Titlecase');
+				dropDown.addOption('upper', 'UPPERCASE');
+				dropDown.setValue(this.plugin.settings.calloutCase);
+				dropDown.onChange(async (value: TextCase) => {
+					this.plugin.settings.calloutCase = value;
+					await this.plugin.saveSettings()
+				})
 			})
 	}
 }

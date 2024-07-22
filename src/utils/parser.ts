@@ -24,17 +24,36 @@ export default class CalloutParser {
 		if (callout.id === 'none') {
 			return "> "
 		}
+
+		let calloutStr = callout.id;
+		switch (this.plugin.settings.calloutCase) {
+			case 'lower': {
+				calloutStr = calloutStr.toLowerCase();
+				break;
+			}
+			case 'title': {
+				calloutStr = calloutStr.toLowerCase().split(' ').map((word: string) => {
+					return (word.charAt(0).toUpperCase() + word.slice(1));
+				}).join(' ');
+				break;
+			}
+			case 'upper': {
+				calloutStr = calloutStr.toUpperCase();
+				break;
+			}
+		}
+
 		let prefix: string;
 		let suffix: string;
 		switch (format) {
 			case "default":
 				prefix = "> [!"
 				suffix = "]"
-				return prefix + callout.id + suffix;
+				return prefix + calloutStr + suffix;
 			case "admonition":
 				prefix = "```";
 				suffix = "\n```";
-				return prefix + callout.id + suffix
+				return prefix + calloutStr + suffix
 		}
 	}
 
