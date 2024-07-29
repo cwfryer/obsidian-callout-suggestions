@@ -29,6 +29,20 @@ In Obsidian go to `Settings > Third-party plugins > Community Plugins > Browse` 
 
 Unzip the [latest release](https://github.com/cwfryer/obsidian-callout-suggestions/releases/latest) into your `<vault>/.obsidian/plugins/` folder.
 
+## Known Issues
+> [!WARNING]
+> Users of [Advanced Slides](https://github.com/MSzturc/obsidian-advanced-slides/tree/main) or [slides-extended](https://github.com/ebullient/obsidian-slides-extended) take note.
+
+Some plugins can cause problems with suggestion modals.
+If you're having problems with the suggestion modal not showing up, try these steps:
+
+Settings -> Community plugins -> Installed plugins:
+
+1. enable Callout Suggestion & disable Advanced Slides / other plugins
+2. click the reload Plugins button
+3. enable Advanced Slides again
+4. click the reload Plugins button again
+
 ## Special Thanks
 [argenos](https://github.com/argenos/nldates-obsidian) for the suggest modal.
 [eth-p](https://github.com/eth-p/obsidian-callout-manager) for the callout api.
